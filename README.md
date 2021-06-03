@@ -1,2 +1,2 @@
 # netlogo-hpc
-An example of runing NetLogo model using high-performance computing (HPC) platform.
+An example of running NetLogo models on a high-performance computing (HPC) platform.
