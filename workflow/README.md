@@ -1,5 +1,7 @@
 [TOC]
 
+[toc]
+
 ## 1. Install SSH Client on laptop
 
    ### a. Install an SSH client such as [PuTTY](http://www.putty.org/) or [Bitvise](https://www.bitvise.com/ssh-client-download).
@@ -228,4 +230,4 @@
    to quite command line.
    
    
-   <video src="xxx.mp4" />
+   <video src="video_to_be_added.mp4" />
