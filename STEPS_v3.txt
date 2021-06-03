@@ -1,29 +1,25 @@
-1. make a copy of TEMPLATES folder
-cp -r TEMPLATES Test_24Mar
-
-2. Download netlogo model
+1. Download netlogo model
    - download the zip file, or
-   - commit 56ccc is now the last commit, so we just clone it using
-git clone https://github.com/population-interventions/COVIDModel.git
+   - clone the latest Git commit using:
+git clone https://github.com/~filelocation~
 
-3. Revise and Run bash xml_step1n2n3_ALL_IN_ONE_clean.sh
+2. Revise and Run bash xml_step1n2n3_ALL_IN_ONE_clean.sh
 bash xml_step1n2n3_ALL_IN_ONE_clean.sh
-   - Revise BEHAVIORSPACE_NAME='MainRun_PK' #THIS ASSUME THE NAME IS UNIQUE
-   - Revise NETLOGO_MODEL='/data/gpfs/projects/punim1439/workflow/Test_23Mar/Vic TB Elim Economic Models/VIC JAN/headless.nlogo'
+   - Revise BEHAVIORSPACE_NAME='~Filename~' #THIS ASSUMES THE NAME IS UNIQUE
+   - Revise filepath NETLOGO_MODEL='xxx/xxx/xxxx/xxx.nlogo'
    - This will create Experiment_auto.xml, head.xml, seed.xml, tail.xml, xmls folder and 100 xml files under xmls folder
    - You can also run the three steps separately (xml_step1n2_.. then xml_step3_.., OR xml_step1.. then xml_step2.. then xml_step3..)
 
-4. Revise and Run sbatch submit_jobarray_snowy.slurm
-sbatch submit_jobarray_snowy.slurm
+3. Revise and Run sbatch submit_jobarray_snowy.slurm
+sbatch submit_jobarray.slurm
 
-5. Move all slurm_*.out files to slurm folder (This step is optional)
+4. Move all slurm_*.out files to slurm folder (This step is optional)
 mkdir -p slurms
 mv ./slurm-*.out ./slurms/
 
-6. Merge CSV result # need to cd to the file location
+5. Merge CSV result # need to cd to the file location
 cd output_folder
 awk '(NR < 8) || (FNR > 7)' *_table_*.csv > MergedResults.csv
 
 Got the file. Done!!
 
-Task: An example to run is the model MainRun_PK in Pakistan/headless.nlogo from https://github.com/population-interventions/CovidABM/commit/1b2ab6abaf6c9e7fd538b5fe9459de9bad331e87
