@@ -4,6 +4,7 @@ The NetLogo model must contain a named experiment within the BehaviourSpace func
 2. Download NetLogo model from GitHub
    - download the zip file, or
    - clone the latest Git commit using:
+   cd path/to/your/project/folder
    git clone https://github.com/~filelocation~
 
 3. Revise and Run bash create_xmls.sh
