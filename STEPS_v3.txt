@@ -1,23 +1,28 @@
-1. Download netlogo model
+1) Firstly, NetLogo must be installed to run on your HPC cluster. Next a NetLogo model must be created to match the format required for deployment. Any NetLogo dependencies and plug-in packages (e.g., rngs, GIS, etc.) should be copied to the same folder to the NetLogo model on the HPC or can be placed in the extensions folder in the NetLogo extensions directory.
+
+The NetLogo model must contain a named experiment within the BehaviourSpace function that contains a number of random seeds equal to the number of individual runs desired for each unique parameter combination. For example, 100 random seeds, com-bined with 3 policy setting choices on (example) variable 1 and 5 choices on (example) variable 2 would result in 100 x 3 x 5 = 1500 individual model runs containing 100 runs of 15 separate policy combinations. (Sstrictly speaking, you could also split it into 3 files or 5 files using the other variables, too, but its simpler to use the random-seed approach).
+
+
+2. Download NetLogo model
    - download the zip file, or
    - clone the latest Git commit using:
-git clone https://github.com/~filelocation~
+   git clone https://github.com/~filelocation~
 
-2. Revise and Run bash xml_step1n2n3_ALL_IN_ONE_clean.sh
-bash xml_step1n2n3_ALL_IN_ONE_clean.sh
+3. Revise and Run bash xml_ALL_IN_ONE_clean.sh
+bash xml_ALL_IN_ONE_clean.sh
    - Revise BEHAVIORSPACE_NAME='~Filename~' #THIS ASSUMES THE NAME IS UNIQUE
    - Revise filepath NETLOGO_MODEL='xxx/xxx/xxxx/xxx.nlogo'
    - This will create Experiment_auto.xml, head.xml, seed.xml, tail.xml, xmls folder and 100 xml files under xmls folder
    - You can also run the three steps separately (xml_step1n2_.. then xml_step3_.., OR xml_step1.. then xml_step2.. then xml_step3..)
 
-3. Revise and Run sbatch submit_jobarray_snowy.slurm
+4. Revise and Run sbatch submit_jobarray_snowy.slurm
 sbatch submit_jobarray.slurm
 
-4. Move all slurm_*.out files to slurm folder (This step is optional)
+5. Move all slurm_*.out files to slurm folder (This step is optional)
 mkdir -p slurms
 mv ./slurm-*.out ./slurms/
 
-5. Merge CSV result # need to cd to the file location
+6. Merge CSV result # need to cd to the file location
 cd output_folder
 awk '(NR < 8) || (FNR > 7)' *_table_*.csv > MergedResults.csv
 
