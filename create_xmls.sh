@@ -1,11 +1,12 @@
 #!/bin/bash
 BEHAVIORSPACE_NAME='MainRun' #REVISE HERE (THIS ASSUME THE NAME IS UNIQUE)
-NETLOGO_MODEL='/data/gpfs/projects/punim1439/workflow/Test_23Mar/Vic TB Elim Economic Models/VIC JAN/headless.nlogo' #REVISE HERE
-OUTPUT_FILE='Experiment_auto.xml'
+NETLOGO_MODEL='/path/to/your/nlogo/file/for/example/model.nlogo' #REVISE HERE
+OUTPUT_FILE='Experiment.xml'
 
+#creating an experiment setting file - Experiment.xml for NetLogo running in headless mode
 #<?xml version="1.0" encoding="UTF-8"?>
 #<!DOCTYPE experiments SYSTEM "behaviorspace.dtd">
-echo '<?xml version="1.0" encoding="UTF-8"?>' > $OUTPUT_FILE
+echo '<?xml version="1.0" encoding="UTF-8"?>' > $OUTPUT_FILE #use "$OUTPUT_FILE" if this file name includes space; same for other file names
 echo '<!DOCTYPE experiments SYSTEM "behaviorspace.dtd">' >> $OUTPUT_FILE
 
 echo '<experiments>' >> $OUTPUT_FILE
@@ -18,6 +19,7 @@ echo "$OUTPUT_FILE created!"
 
 
 
+#split Experiment.xml by a parameter - "rand_seed" in this example
 XML_HEAD='head.xml'
 XML_SEED='seed.xml'
 XML_TAIL='tail.xml'
@@ -34,6 +36,7 @@ echo "$XML_HEAD, $XML_SEED, $XML_TAIL created!"
 
 
 
+#combine files to create exp_[i].xml files where each exp_[i].xml have only one rand_seed value 
 #XML_HEAD='head.xml'
 #XML_SEED='seed.xml'
 #XML_TAIL='tail.xml'
@@ -57,3 +60,9 @@ echo $output
 n=$((n+1))
 done < $XML_SEED
 echo 'in the xmls folder created!'
+
+
+
+
+#clean auxilary files (optional)
+#rm $OUTPUT_FILE $XML_HEAD $XML_SEED $XML_TAIL $tmp_seedtail_file
