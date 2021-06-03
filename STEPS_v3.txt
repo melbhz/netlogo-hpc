@@ -1,16 +1,14 @@
-1) Firstly, NetLogo must be installed to run on your HPC cluster. Next a NetLogo model must be created to match the format required for deployment. Any NetLogo dependencies and plug-in packages (e.g., rngs, GIS, etc.) should be copied to the same folder to the NetLogo model on the HPC or can be placed in the extensions folder in the NetLogo extensions directory.
+1. Firstly, NetLogo must be installed to run on your HPC cluster. Next a NetLogo model must be created to match the format required for deployment. Any NetLogo dependencies and plug-in packages (e.g., rngs, GIS, etc.) should be copied to the same folder to the NetLogo model on the HPC or can be placed in the extensions folder in the NetLogo extensions directory.
+The NetLogo model must contain a named experiment within the BehaviourSpace function that contains a number of random seeds equal to the number of individual runs desired for each unique parameter combination. For example, 100 random seeds, combined with 3 policy setting choices on (example) variable 1 and 5 choices on (example) variable 2 would result in 100 x 3 x 5 = 1500 individual model runs containing 100 runs of 15 separate policy combinations. (Strictly speaking, you could also split it into 3 files or 5 files using the other variables, too, but its simpler to use the random-seed approach).
 
-The NetLogo model must contain a named experiment within the BehaviourSpace function that contains a number of random seeds equal to the number of individual runs desired for each unique parameter combination. For example, 100 random seeds, com-bined with 3 policy setting choices on (example) variable 1 and 5 choices on (example) variable 2 would result in 100 x 3 x 5 = 1500 individual model runs containing 100 runs of 15 separate policy combinations. (Sstrictly speaking, you could also split it into 3 files or 5 files using the other variables, too, but its simpler to use the random-seed approach).
-
-
-2. Download NetLogo model
+2. Download NetLogo model from GitHub
    - download the zip file, or
    - clone the latest Git commit using:
    git clone https://github.com/~filelocation~
 
 3. Revise and Run bash create_xmls.sh
 bash create_xmls.sh
-   - Revise BEHAVIORSPACE_NAME='~Filename~' #THIS ASSUMES THE NAME IS UNIQUE
+   - Revise BEHAVIORSPACE_NAME='~Experimentname~' #THIS ASSUMES THIS EXPERIMENT NAME IS UNIQUE
    - Revise filepath NETLOGO_MODEL='xxx/xxx/xxxx/xxx.nlogo'
    - This will create Experiment_auto.xml, head.xml, seed.xml, tail.xml, xmls folder and 100 xml files under xmls folder
    - You can also run the three steps separately (xml_step1n2_.. then xml_step3_.., OR xml_step1.. then xml_step2.. then xml_step3..)
@@ -23,8 +21,7 @@ mkdir -p slurms
 mv ./slurm-*.out ./slurms/
 
 6. Merge CSV result # need to cd to the file location
-cd output_folder
+cd path/to/your/output/folder
 awk '(NR < 8) || (FNR > 7)' *_table_*.csv > MergedResults.csv
 
 Got the file. Done!!
-
