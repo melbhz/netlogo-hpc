@@ -12,6 +12,12 @@
 
 #SBATCH --array=1-100
 
+#The above commands instruct the HPC cluster "Spartan" using directives. The job environment is created using these. While 
+#the SBATCH commands are within comments, they are parsed and understood by the HPC. The commands above do the following:
+#Creates a job with a single node on partition snowy using special directive "covid19" to get higher priority for the pro-
+#-ject punim1439. The job has a maximum time limit of 2 hours with 8 cpus assigned per task. The job has been named "COVID-
+#Model-Snowy" and will send an automated email to jason.thompson@unimelb.edu.au
+
 module load java
 #module load netlogo/6.2.0-64
 
