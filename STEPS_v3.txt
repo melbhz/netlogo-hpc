@@ -8,8 +8,8 @@ The NetLogo model must contain a named experiment within the BehaviourSpace func
    - clone the latest Git commit using:
    git clone https://github.com/~filelocation~
 
-3. Revise and Run bash xml_ALL_IN_ONE_clean.sh
-bash xml_ALL_IN_ONE_clean.sh
+3. Revise and Run bash create_xmls.sh
+bash create_xmls.sh
    - Revise BEHAVIORSPACE_NAME='~Filename~' #THIS ASSUMES THE NAME IS UNIQUE
    - Revise filepath NETLOGO_MODEL='xxx/xxx/xxxx/xxx.nlogo'
    - This will create Experiment_auto.xml, head.xml, seed.xml, tail.xml, xmls folder and 100 xml files under xmls folder
