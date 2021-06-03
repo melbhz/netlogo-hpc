@@ -1,0 +1,55 @@
+#make a copy of TEMPLATES folder
+cp -r TEMPLATES Test_24Mar
+cd /data/gpfs/projects/punim1439/workflow/Demo/Test_24Mar
+
+#Okay, commit 56ccc is now the last commit, so
+git clone https://github.com/population-interventions/COVIDModel.git
+
+bash create_parallel_xmls.sh
+
+spartan-weather
+
+sbatch submit_jobarray_snowy.slurm
+
+showq -u
+
+squeue -u jthooker
+
+cd /data/gpfs/projects/punim1439/workflow/Demo/Test_24Mar
+mkdir slurms
+mv ./slurm-*.out ./slurms/
+
+cd /data/gpfs/projects/punim1439/workflow/Demo/Test_24Mar/outputs_snowy
+awk '(NR < 8) || (FNR > 7)' *_table_*.csv > MergedResults.csv
+head mergedresult.csv
+
+##/////////////cancel/////////////////////##
+scancel -j 24700701
+scancel -n COVIDModel-snowy
+scancel -p snowy
+scancel -A zhahz
+##////////////////////////////////////////##
+
+cp jobarray_8core_12thread_phy_qos_final_plotless.slurm jobarray_8core_12thread_snowy_qos_plotless.slurm
+
+sbatch jobarray_8core_12thread_snowy_qos_plotless.slurm
+
+showq -u
+
+
+lscpu
+
+
+mkdir Test_12Mar
+ls
+cd Test_12Mar
+
+git clone https://github.com/population-interventions/COVIDModel.git
+
+MainRun
+
+cd "/data/gpfs/projects/punim1439/workflow/Test_12Mar/COVIDModel/Vic TB Elim Economic Models/VIC JAN"
+cp "COVID SIMULS VIC JAN Vaccination Model.nlogo" head.xml
+
+
+chmod -v g=rw my_filename_that_need_add_readwrite_permission_for_group_members
