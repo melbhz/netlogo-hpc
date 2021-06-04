@@ -1,3 +1,8 @@
+------------------------------------------------------------------------------
+Copyright (c) 2021 Haifeng Zhao, Jason Thompson, Sachith Seneviratne, Rohan Byrne
+This free software is provided under the MIT License; see \LICENSE.
+------------------------------------------------------------------------------
+
 1. Firstly, NetLogo must be installed to run on your HPC cluster. Next a NetLogo model must be created to match the format required for deployment. Any NetLogo dependencies and plug-in packages (e.g., rngs, GIS, etc.) should be copied to the same folder to the NetLogo model on the HPC or can be placed in the extensions folder in the NetLogo extensions directory.
 The NetLogo model must contain a named experiment within the BehaviourSpace function that contains a number of random seeds equal to the number of individual runs desired for each unique parameter combination. For example, 100 random seeds, combined with 3 policy setting choices on (example) variable 1 and 5 choices on (example) variable 2 would result in 100 x 3 x 5 = 1500 individual model runs containing 100 runs of 15 separate policy combinations. (Strictly speaking, you could also split it into 3 files or 5 files using the other variables, too, but its simpler to use the random-seed approach).
 
