@@ -14,7 +14,7 @@ The key steps for users to take this repo and extend it for their work is as fol
 3) Run our main COVID script and verify that the results are equivalent (we provide the output of our script to verify this).
 4) Adapt the scripts to your needs.
 
-For a more detailed overiew of the workflow, please navigate to the workflow folder (on GitHub) or read "workflow.docx".
+For a more detailed overview of the workflow, please navigate to the workflow folder (on GitHub) or read "workflow.docx".
 
 In our experience, we found that HPC admins are very pro-active at responding to enabling HPC based research (especially for COVID-
 related research).
