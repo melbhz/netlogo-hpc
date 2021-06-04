@@ -3,7 +3,7 @@
 This repo provides the working copy of our submission to SSC. We strive to drive usability of this work by providing editable copies
 of all documents and ask that you cite us if this is helpful in your research as follows:
 
-<CITATION>
+TODO:Include citation for article here.
 
 Please remember to follow the copyrights included in all documents and scripts during any reproduction. Feel free to email us with any 
 concerns.
@@ -20,4 +20,5 @@ related research).
   
   
 If you use the COVID model provided please cite it as follows:
-<CITATION>
+
+TODO: include citation(s) for model here.
