@@ -1,6 +1,6 @@
 #!/bin/bash
-BEHAVIORSPACE_NAME='MainRun' #REVISE HERE (This is the Experiment name - This assume this .nlogo file only have one experiment named for example MainRun)
-NETLOGO_MODEL='/path/to/your/nlogo/file/xxxx.nlogo' #REVISE HERE
+BEHAVIORSPACE_NAME='MainRun' #REVISE HERE (This is the Experiment name - This assume this .nlogo file only have one experiment named e.g. MainRun)
+NETLOGO_MODEL='/xxxx/path/to/your/nlogo/file/xxx.nlogo' #REVISE HERE
 OUTPUT_FILE='Experiment.xml'
 
 #1. creating an experiment setup-file - Experiment.xml for NetLogo running in headless mode
