@@ -74,11 +74,28 @@
    to install NetLogo to current directory. 
     
 
-   **Note:** To paste cd /data/gpfs/projects/punim1439/workflow/Test to command line, copy this text and **Right Click** your mouse in command line to paste this text.
+   **Note:** 
+   * To paste cd /data/gpfs/projects/punim1439/workflow/Test to command line, copy this text and **Right Click** your mouse in command line to paste this text.
 
-   When the NetLogo installation file is downloaded, it may not show in the SFTP window immediately. Click **Refresh**, and the new file will show. 
-
-  <img src="./imgs/refresh.PNG" width="500">
+   * When the NetLogo installation file is downloaded, it may not show in the SFTP window immediately. Click **Refresh**, and the new file will show. 
+      
+      <img src="./imgs/refresh.PNG" width="500">
+  
+  * To run models that require large memory, 
+     - make a copy of netlogo-headless.sh (e.g. netlogo-headless-10g.sh)
+     ```
+     cd "/data/gpfs/projects/punim1439/workflow/NetLogo 6.2.0"
+     cp netlogo-headless.sh netlogo-headless-10g.sh
+     ```
+     - line 15, edit to increase 1GB RAM to 10GB RAM (or 20GB etc.) by changing **-Xmx10240m** to **-Xmx10g**
+     ```  
+     JVM_OPTS=(-Xmx10g -XX:+UseParallelGC -Dfile.encoding=UTF-8)  
+     ```
+      using text editor or type
+     ```
+     nano netlogo-headless-10g.sh  
+     ```
+   * If the model requires an extension which is not a default extention of NetLogo software, the extension should be copied to the same folder to the NetLogo model or can be placed in the extension’s folder in the NetLogo extensions directory. Refer [here](https://ccl.northwestern.edu/netlogo/docs/extensions.html) for where to find extensions. For example, we can make a copy of the ```rngs``` extension from ```C:\Program Files\NetLogo 6.2.0\app\extensions\.bundled\rngs``` to ```/data/gpfs/projects/punim1439/workflow/NetLogo 6.2.0/app/extensions/.bundled/rngs```
     
 
     
@@ -101,11 +118,12 @@
 
    - Copy external extensions such as rngs folder to the same directory as where file “.nlogo” is, because for example this model requires rngs extension which is not a default extention of NetLogo software.
 
+
    ### b.   XML file
 
    #### Revise and Run bash create_xmls.sh
 
-   - Revise BEHAVIORSPACE_NAME='~Filename~'
+   - Revise BEHAVIORSPACE_NAME='Filename'
 
    - Revise filepath NETLOGO_MODEL='xxx/xxx/xxxx/xxx.nlogo'
 
@@ -182,8 +200,9 @@
    ## 7. Check job status
 
    On command line, Run 
-
-   ```showq -u```
+   ```squeue -u yourusername```
+   or
+   ```showq -u``` (for spartan users)
 
    to show current jobs. 
 
@@ -215,7 +234,7 @@
 
    ```spartan-weather```
 
-   to see usage of all partitions
+   to see usage of all partitions (for spartan users)
 
     
 
