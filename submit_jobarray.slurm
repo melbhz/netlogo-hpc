@@ -2,11 +2,11 @@
 #SBATCH --nodes=1
 #SBATCH --partition snowy 
 #SBATCH --qos=covid19
-#SBATCH -A your_project_name
+#SBATCH -A punim1439
 #SBATCH --time 2:00:00 
 #SBATCH --cpus-per-task=8 
 
-#SBATCH --job-name="your-job-name"
+#SBATCH --job-name="COVIDModel-Snowy"
 #SBATCH --mail-user=jason.thompson@unimelb.edu.au
 #SBATCH --mail-type=END
 
@@ -16,15 +16,17 @@
 #the SBATCH commands are within comments, they are parsed and understood by the HPC. The commands above do the following:
 #Creates a job with a single node on partition snowy using special directive "covid19" to get higher priority for the pro-
 #-ject punim1439. The job has a maximum time limit of 2 hours with 8 cpus assigned per task. The job has been named "COVID-
-#Model-Snowy" and will send an automated email to jason.thompson@unimelb.edu.au
+#Model-Snowy" and will send an automated email to jason.thompson@unimelb.edu.au when jobs finished. For some partitions, 
+#--qos and #SBATCH -A are not necessary and can be deleted. 
 
 module load java
 
 BASE_FOLDER='/path/to/your/slurm/xxxx/xxxx/directory' #REVISE HERE: The base folder is where the slurm file lives
 cd $BASE_FOLDER
 
-NETLOGO_SH='/path/to/your/NetLogo/installation/xxxx/xxxx/NetLogo 6.2.0/netlogo-headless-10g.sh' #REVISE HERE: The path about your NetLogo software
-NETLOGO_MODEL='/path/to/your/nlogo/file/xxxx/xxxx.nlogo' #REVISE HERE: The path of *.nlogo file
+NETLOGO_SH='/xxx/xxxx/NetLogo 6.2.0/netlogo-headless.sh' #REVISE HERE: The path about your NetLogo software
+#NETLOGO_SH='/xxx/xxx/NetLogo 6.2.0/netlogo-headless-10g.sh' #when run model that requires large memory (refer to workflow.docx)
+NETLOGO_MODEL='/xxxx/xxx/xxxx/xxx.nlogo' #REVISE HERE: The path of *.nlogo file
 
 EXPERIMENT="xmls/exp_${SLURM_ARRAY_TASK_ID}.xml"
 TABLE_SUFFIX="_table"
@@ -43,5 +45,6 @@ date '+%A %W %Y %X'
   --setup-file "$EXPERIMENT" \
   --table "$OUTPUT_TABLE" \
   --threads 8
-  
+
+#for threads, same value as cpus-per-task is recommended 
 date '+%A %W %Y %X'
