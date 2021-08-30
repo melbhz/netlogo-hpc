@@ -22,8 +22,8 @@ XML_SEED='seed.xml'
 XML_TAIL='tail.xml'
 tmp_seedtail_file='tmp_seedtail.txt'
 
-sed -n -e '/<?xml version="1.0" encoding="UTF-8"?>/,/<enumeratedValueSet variable="rand_seed">/p' "$OUTPUT_FILE" > $XML_HEAD
-sed '/<?xml version="1.0" encoding="UTF-8"?>/,/<enumeratedValueSet variable="rand_seed">/d' "$OUTPUT_FILE" > $tmp_seedtail_file
+sed -n -e '/<?xml version="1.0" encoding="UTF-8"?>/,/<enumeratedValueSet variable="repetitions">/p' "$OUTPUT_FILE" > $XML_HEAD
+sed '/<?xml version="1.0" encoding="UTF-8"?>/,/<enumeratedValueSet variable="repetitions">/d' "$OUTPUT_FILE" > $tmp_seedtail_file
 
 sed -n -e '/<\/enumeratedValueSet>/,/<\/experiments>/p' "$tmp_seedtail_file" > $XML_TAIL
 sed '/<\/enumeratedValueSet>/,/<\/experiments>/d' "$tmp_seedtail_file" > $XML_SEED
