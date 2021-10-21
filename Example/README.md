@@ -66,7 +66,7 @@ This part is only required for Windows users. Mac (OS X) already has an SSH clie
     - Tab **[Login]**: Set **Host** as `spartan.hpc.unimelb.edu.au` (change here to use the host by your institute), **Port** as `22`, **Username** as your `username`, **Initial method** as `password`, **Password** as your password.
     - Tab **[Options]**: Tick **Open Terminal** and **Open SFTP**.
     
-      <img src="image\SSH_Login_.png" width="48%;" /> <img src="image\SSH_Options_.png" width="48%;" />
+      <img src="image\SSH_Login_.png" width="48%" /> <img src="image\SSH_Options_.png" width="48%" />
 
 3. Save profile
 
@@ -79,8 +79,8 @@ This part is only required for Windows users. Mac (OS X) already has an SSH clie
    The command prompt is where you type and run your scripts. The SFTP window provides a graphical user interface where you can create/copy/delete files and folders, upload files to Spartan by dragging a file from left to right, and download files to your laptop by dragging files from right to left.
 
    <p align="center">
-      <img src="image\SSH_cmd.PNG" width="55%;" />
-      <img src="image\SSH_SFTP_.PNG" width="55%;" />
+      <img src="image\SSH_cmd.PNG" width="55%" />
+      <img src="image\SSH_SFTP_.PNG" width="55%" />
    </p>
 
    
@@ -117,7 +117,7 @@ Then, in command line,
     Click **Refresh**, and you should be able to see the NetLogo 6.2.0 folder. 
 
     <p align="center">
-      <img src="image\SSH_NetLogo_.PNG" width="60%;" />
+      <img src="image\SSH_NetLogo_.PNG" width="60%" />
     </p>
 
     **:bulb:Tips**: 
@@ -134,13 +134,13 @@ Then, in command line,
    This model is adjusted on top of a NetLogo sample model `NetLogo 6.2.0/app/models/Sample Models/Biology/Wolf Sheep Predation.nlogo`. We created an `HPC_Experiment` in the BahaviorSpace, added a global variable `repetitions` with 100 values, and removed `user-message "The sheep have inherited the earth"`. 
    
    <p align="center">
-      <img src="image\NetLogo_BehaviorSpace_.PNG" width="50%;" />
+      <img src="image\NetLogo_BehaviorSpace_.PNG" width="50%" />
    </p>
 
 2. Upload `Wolf_Sheep_Predation.nlogo`, `create_xmls.sh` and `submit_jobarray.slurm` to HPC folder.
 
     <p align="center">
-      <img src="image\SSH_Wolf_Sheep_HPC_.PNG" width="50%;" />
+      <img src="image\SSH_Wolf_Sheep_HPC_.PNG" width="58%" />
     </p>
 
     **:bulb:Tips**: 
@@ -284,7 +284,7 @@ This will create a file `MergedResults.csv` as the final output file.
    Click **[New terminal console]** to open a new command window. Click **[New SFTP window]** to open a new SFTP window. Set the **Initial directory** in Tab **[SFTP]** and Save profile, to specify initial directories for your new SFTP windows.
 
    <p align="center">
-      <img src="image\SSH_Tips_.PNG" width="45%" />
+      <img src="image\SSH_Tips_.PNG" width="48%" />
    </p>
 
 4. NetLogo RAM
