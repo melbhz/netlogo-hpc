@@ -1,9 +1,10 @@
 #!/bin/bash
-BEHAVIORSPACE_NAME='HPC_Experiment' #REVISE HERE (This is the Experiment name - This assume this .nlogo file only have one experiment named e.g. MainRun)
+BEHAVIORSPACE_NAME='HPC_Experiment' #REVISE HERE
 NETLOGO_MODEL='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/Wolf_Sheep_Predation.nlogo' #REVISE HERE
-OUTPUT_FILE='Experiment.xml'
+
 
 #1. creating an experiment setup-file - Experiment.xml for NetLogo running in headless mode
+OUTPUT_FILE='Experiment.xml'
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$OUTPUT_FILE" #use "$OUTPUT_FILE" if this file name includes space; same for other file names
 echo '<!DOCTYPE experiments SYSTEM "behaviorspace.dtd">' >> "$OUTPUT_FILE"
 

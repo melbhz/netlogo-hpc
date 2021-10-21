@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=8 
 
 #SBATCH --job-name="wolf_sheep_predation"
-#SBATCH --mail-user=haifeng.zhao@unimelb.edu.au  ##jason.thompson
+#SBATCH --mail-user=jason.thompson@unimelb.edu.au
 #SBATCH --mail-type=END
 
 #SBATCH --array=1-100
@@ -25,7 +25,7 @@ BASE_FOLDER='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Preda
 cd $BASE_FOLDER
 
 NETLOGO_SH='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/NetLogo 6.2.0/netlogo-headless.sh' #REVISE HERE: The path about your NetLogo software
-#NETLOGO_SH='/xxx/xxx/NetLogo 6.2.0/netlogo-headless-10g.sh' #when run model that requires large memory (refer to workflow.docx)
+#NETLOGO_SH='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/NetLogo 6.2.0/netlogo-headless-10g.sh' #when run model that requires large memory (refer to README)
 NETLOGO_MODEL='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/Wolf_Sheep_Predation.nlogo' #REVISE HERE: The path of *.nlogo file
 
 EXPERIMENT="xmls/exp_${SLURM_ARRAY_TASK_ID}.xml"
