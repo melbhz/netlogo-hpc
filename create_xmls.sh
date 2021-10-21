@@ -1,9 +1,10 @@
 #!/bin/bash
 BEHAVIORSPACE_NAME='MainRun' #REVISE HERE (This is the Experiment name - This assume this .nlogo file only have one experiment named e.g. MainRun)
 NETLOGO_MODEL='/xxxx/path/to/your/nlogo/file/xxx.nlogo' #REVISE HERE
-OUTPUT_FILE='Experiment.xml'
+
 
 #1. creating an experiment setup-file - Experiment.xml for NetLogo running in headless mode
+OUTPUT_FILE='Experiment.xml'
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$OUTPUT_FILE" #use "$OUTPUT_FILE" if this file name includes space; same for other file names
 echo '<!DOCTYPE experiments SYSTEM "behaviorspace.dtd">' >> "$OUTPUT_FILE"
 

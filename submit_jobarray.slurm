@@ -11,7 +11,7 @@
 #SBATCH --mail-type=END
 
 #SBATCH --array=1-100
-
+ 
 #The above commands instruct the HPC cluster "Spartan" using directives. The job environment is created using these. While 
 #the SBATCH commands are within comments, they are parsed and understood by the HPC. The commands above do the following:
 #Creates a job with a single node on partition snowy using special directive "covid19" to get higher priority for the pro-
