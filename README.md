@@ -1,6 +1,6 @@
 # Improving speed, scale and scope of models for improved real-world decision-making
 
-This repo provides the working copy of our submission to SSC. We strive to drive usability of this work by providing editable copies
+This repo provides a working copy of our NetLogo / HPC project. We strive to drive usability of this work by providing editable copies
 of all documents and ask that you cite us if this is helpful in your research as follows:
 
 Please remember to follow the copyrights included in all documents and scripts during any reproduction. Feel free to email us with any 
@@ -16,5 +16,5 @@ For a more detailed overview of the workflow, please navigate to the workflow fo
 
 In our experience, we found that HPC administrators are very proactive at responding to enabling HPC based research.
   
-If you use the process provided, please cite it as follows: Thompson, J., Zhao, H, Seneviratne, S., & Byrne, (2021). A generic Netlogo high performance computing  (HPC) deployment. 
+If you use the process provided, please cite it as follows: Thompson, J., Zhao, H, Seneviratne, S., Byrne, R., & Vidanaarachichi, R., (2021). Improving speed of models for improved real-world decision-making. 
 
