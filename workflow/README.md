@@ -1,37 +1,5 @@
 [TOC]
 
-# Cheat Sheet
-
-```shell
-# change work directory
-cd /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation
-
-# create experiments
-sed -i.bak 's/\r$//g' create_xmls.sh
-bash create_xmls.sh
-
-# check which partition has more available CPUs
-spartan-weather
-
-# submit jobs
-sed -i.bak 's/\r$//g' submit_jobarray.slurm
-sbatch submit_jobarray.slurm
-
-# check job status
-squeue -u yourusername
-
-# clean log files
-mkdir slurms
-mv ./slurm-*.out ./slurms/
-
-# merge results
-cd outputs
-awk '(NR < 8) || (FNR > 7)' *_table_*.csv > MergedResults.csv
-
-# cancel job
-scancel -n wolf_sheep_predation
-```
-
 # Get Started
 
 ## Summary
@@ -51,7 +19,7 @@ Four steps are required to run NetLogo models on HPC:
 
 Steps 1 and 2 are to set up work environment, and are only need to be done once.
 
-## Set up Environment
+## Set Environment
 
 ### Install SSH Client on Your PC
 
@@ -80,9 +48,10 @@ This part is only required for Windows users. Mac (OS X) already has an SSH clie
 
    <p align="center">
       <img src="image\SSH_cmd.PNG" width="55%" />
+   </p>
+   <p align="center">
       <img src="image\SSH_SFTP_.PNG" width="55%" />
    </p>
-
    
 ### Download NetLogo to HPC
 
@@ -353,6 +322,34 @@ This will create a file `MergedResults.csv` as the final output file.
       --table "output_file.csv"
     ```
     
-    
-    
+# Cheat Sheet
 
+```shell
+# change work directory
+cd /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation
+
+# create experiments
+sed -i.bak 's/\r$//g' create_xmls.sh
+bash create_xmls.sh
+
+# check which partition has more available CPUs
+spartan-weather
+
+# submit jobs
+sed -i.bak 's/\r$//g' submit_jobarray.slurm
+sbatch submit_jobarray.slurm
+
+# check job status
+squeue -u yourusername
+
+# clean log files
+mkdir slurms
+mv ./slurm-*.out ./slurms/
+
+# merge results
+cd outputs
+awk '(NR < 8) || (FNR > 7)' *_table_*.csv > MergedResults.csv
+
+# cancel job
+scancel -n wolf_sheep_predation
+```
