@@ -49,7 +49,6 @@ echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} started  at $starttime"
   --table "$OUTPUT_TABLE" \
   --threads $THREADS
 
-#for threads, same value as cpus-per-task is recommended 
 #date '+%A %W %Y %X'
 endtime=$(date '+%d/%m/%Y %H:%M:%S')
 echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} finished at $endtime"
