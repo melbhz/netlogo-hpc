@@ -36,9 +36,11 @@ OUTPUT_TABLE=${OUTPUT_FOLDER}/"${SLURM_ARRAY_TASK_ID}${TABLE_SUFFIX}_${SLURM_ARR
 
 mkdir -p ${BASE_FOLDER}/$OUTPUT_FOLDER
 
-echo $OUTPUT_FOLDER
+echo "output folder: $OUTPUT_FOLDER"
 
-date '+%A %W %Y %X'
+#date '+%A %W %Y %X'
+starttime=$(date '+%d/%m/%Y %H:%M:%S')
+echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} started  at $starttime"
 
 "$NETLOGO_SH" \
   --model "$NETLOGO_MODEL" \
@@ -47,4 +49,7 @@ date '+%A %W %Y %X'
   --threads 8
 
 #for threads, same value as cpus-per-task is recommended 
-date '+%A %W %Y %X'
+#date '+%A %W %Y %X'
+endtime=$(date '+%d/%m/%Y %H:%M:%S')
+echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} finished at $endtime"
+

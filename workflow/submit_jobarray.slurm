@@ -36,11 +36,11 @@ OUTPUT_TABLE=${OUTPUT_FOLDER}/"${SLURM_ARRAY_TASK_ID}${TABLE_SUFFIX}_${SLURM_ARR
 
 mkdir -p ${BASE_FOLDER}/$OUTPUT_FOLDER
 
-echo $OUTPUT_FOLDER
+echo "output folder: $OUTPUT_FOLDER"
 
 #date '+%A %W %Y %X'
 starttime=$(date '+%d/%m/%Y %H:%M:%S')
-echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} started at $starttime"
+echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} started  at $starttime"
 
 "$NETLOGO_SH" \
   --model "$NETLOGO_MODEL" \
