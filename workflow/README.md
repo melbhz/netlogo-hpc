@@ -190,6 +190,7 @@ Then, in command line,
     **:bulb:Tips**: 
 
     - Run `squeue -u yourusername` to see current jobs, replacing `yourusername` with your username.
+    - Check log files `slurm-jobid_taskid.out` in `Wolf_Sheep_Predation` folder for any error.
     - Run `scancel -n wolf_sheep_predation` to cancel a job, replacing `wolf_sheep_predation` with the value after `SBATCH --job-name=` (file `submit_jobarray.slurm`).
     - Run `spartan-weather` to see usage of all partitions (optional).
     - Run `clear` to clear screen.
@@ -279,7 +280,7 @@ This will create a file `MergedResults.csv` as the final output file.
     nano netlogo-headless-10g.sh  
     ```
 
-    After editing, press <Ctrl> + <X> to exit, type <Y> to save changes, then press <Enter> to overwrite file.
+    After editing, press Ctrl + X to exit, type Y to save changes, then press Enter to overwrite file.
 
 5. NetLogo extensions
 
