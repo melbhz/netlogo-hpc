@@ -27,6 +27,7 @@ cd $BASE_FOLDER
 NETLOGO_SH='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/NetLogo 6.2.0/netlogo-headless.sh' #REVISE HERE: The path about your NetLogo software
 #NETLOGO_SH='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/NetLogo 6.2.0/netlogo-headless-10g.sh' #when run model that requires large memory (refer to README)
 NETLOGO_MODEL='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/Wolf_Sheep_Predation.nlogo' #REVISE HERE: The path of *.nlogo file
+THREADS=8 #REVISE HERE: Same value as cpus-per-task is recommended; 1 to disable parallel runs; slightly larger value may speed up model run.
 
 EXPERIMENT="xmls/exp_${SLURM_ARRAY_TASK_ID}.xml"
 TABLE_SUFFIX="_table"
@@ -46,7 +47,7 @@ echo "job ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID} started  at $starttime"
   --model "$NETLOGO_MODEL" \
   --setup-file "$EXPERIMENT" \
   --table "$OUTPUT_TABLE" \
-  --threads 8
+  --threads $THREADS
 
 #for threads, same value as cpus-per-task is recommended 
 #date '+%A %W %Y %X'
