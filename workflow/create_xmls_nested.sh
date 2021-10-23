@@ -1,12 +1,12 @@
 #!/bin/bash
 BEHAVIORSPACE_NAME='HPC_Experiment' #REVISE HERE
 NETLOGO_MODEL='/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/Wolf Sheep Predation HPC.nlogo' #REVISE HERE
-declare -a SPLIT_BY_VARIABLES=("wolf-gain-from-food" "wolf-reproduce") #REVISE HERE: what variables to use to split the experiment
+declare -a SPLIT_BY_VARIABLES=("wolf-gain-from-food" "wolf-reproduce") #REVISE HERE: variable(s) to use to split experiment
 
 
 #1. creating an experiment setup-file - Experiment.xml for NetLogo running in headless mode
 function CreateExperimentXML ()
-{   
+{
     local BEHAVIORSPACE_NAME=$1
     local NETLOGO_MODEL=$2
     local OUTPUT_FILE=$3
@@ -51,13 +51,13 @@ function CreateXMLbyParameter(){
     #echo "$XML_HEAD, $XML_SEED, $XML_TAIL created!"
     
     #3. combine files to create exp_[i].xml files where each exp_[i].xml have only one rand_seed value 
-    #OUTPUT_DIR='xmls'	
+    #OUTPUT_DIR='xmls'
     local PREFIX='exp_'
     local FILE_EXTENTION='.xml'
     #mkdir -p $OUTPUT_DIR
     #n=1
     
-    while IFS= read -r line || [ -n "$line" ]; do 
+    while IFS= read -r line || [ -n "$line" ]; do
     #same as: while IFS= read -r line || [[ -n $line ]]; do
     # reading each line
     #cat $XML_HEAD $line $XML_TAIL > xmls/n.xml
@@ -76,9 +76,9 @@ function CreateXMLbyParameter(){
     return $n
 }
 
-######
+#####
 TMP_INPUT_DIR='xmls_input'
-#loop over all split by variables
+#loop over all split_by variables
 for var in "${SPLIT_BY_VARIABLES[@]}"
 do
    echo "splitting experiment by \"$var\" ..."
@@ -86,7 +86,7 @@ do
    echo "feed output as input to function"
    mv -v "$OUTPUT_DIR" "$TMP_INPUT_DIR"
    mkdir $OUTPUT_DIR
-   for input_file in $TMP_INPUT_DIR/*.xml; do   
+   for input_file in $TMP_INPUT_DIR/*.xml; do
         echo "spliting $input_file"
         CreateXMLbyParameter "$input_file" "$OUTPUT_DIR" "$var" $nextn
         nextn=$?
