@@ -1,0 +1,11 @@
+- do not request more than one node for one job - it won't work - it may just work on one node, and even slower than allocated to one node only
+- do not set too large threads - for example thread 40 for 8 core is slower than thread 8 for 8 core
+- more cpu core for one job is faster - for example 24 core 24 thread - not three times of 8 core but two times - but it will take very long to get resources because 24 core for one node is not easily available for 32 core nodes.
+
+to allow group members read, write and execuate files in folder Test,
+run the following script to change permissions on all files in folder Test:
+
+cd /the/path/to/parent/folder/of/Test/Folder
+chmod -vR u=rwx,g=rwx Test
+OR
+chmod -vR g+wx Test
