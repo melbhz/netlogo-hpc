@@ -322,7 +322,12 @@ This will create a file `MergedResults.csv` as the final output file.
       --experiment "HPC_Experiment" ^
       --table "output_file.csv"
     ```
-    
+7. :bulb: Use [`create_xmls_nested.sh`](create_xmls_nested.sh) to split model by more than one variables
+
+   - BEHAVIORSPACE_NAME=`'HPC_Experiment'`
+   - NETLOGO_MODEL=`'/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/Wolf Sheep Predation HPC.nlogo'`
+   - **SPLIT_BY_VARIABLES**=`("wolf-gain-from-food" "wolf-reproduce")` to split the experiment by two variables "wolf-gain-from-food" and "wolf-reproduce"
+
 # Cheat Sheet
 
 ```shell
