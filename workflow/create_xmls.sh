@@ -34,7 +34,7 @@ echo "$XML_HEAD, $XML_SEED, $XML_TAIL created!"
 
 
 
-#3. combine files to create exp_[i].xml files where each exp_[i].xml have only one rand_seed value 
+#3. combine files to create exp_[i].xml files where each exp_[i].xml have only one rand_seed value
 OUTPUT_DIR='xmls'
 PREFIX='exp_'
 FILE_EXTENTION='.xml'
