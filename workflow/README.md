@@ -268,7 +268,7 @@ This will create a file `MergedResults.csv` as the final output file.
     cp netlogo-headless.sh netlogo-headless-10g.sh
     ```
 
-    - Edit `netlogo-headless-10g.sh`: Line 15, Change **-Xmx10240m** to **-Xmx10g** to increase 1GB RAM to 10GB RAM.
+    - Edit `netlogo-headless-10g.sh`: Line 15, Change **-Xmx1024m** to **-Xmx10g** to increase 1GB RAM to 10GB RAM.
 
     ```  bash
     JVM_OPTS=(-Xmx10g -XX:+UseParallelGC -Dfile.encoding=UTF-8)  
