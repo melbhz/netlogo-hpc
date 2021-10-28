@@ -6,7 +6,7 @@
 
 ---
 
-The main idea is to run NetLogo's [BehavorSpace](http://ccl.northwestern.edu/netlogo/docs/behaviorspace.html#advanced) in ["headless" mode](http://ccl.northwestern.edu/netlogo/docs/behaviorspace.html#running-from-the-command-line). Experiments in BehaviorSpace is split into a number of separate simulations, each of which is submitted to HPC as a separate job and run in parallel.
+The main idea is to run NetLogo's [BehaviorSpace](http://ccl.northwestern.edu/netlogo/docs/behaviorspace.html#advanced) in ["headless" mode](http://ccl.northwestern.edu/netlogo/docs/behaviorspace.html#running-from-the-command-line). Experiments in BehaviorSpace are split into a number of separate simulations, each of which is submitted to HPC as a separate job and run in parallel.
 
 ---
 
@@ -14,10 +14,10 @@ Four steps are required to run NetLogo models on HPC:
 
 1. Install an [SSH](https://en.wikipedia.org/wiki/Secure_Shell) client to connect HPC (For Mac OS users, this is not required).
 2. Download NetLogo software and unzip it to your project directory on HPC.
-3. Add an experiment in the BahaviorSpace of your NetLogo model.
+3. Add an experiment in the BehaviorSpace of your NetLogo model.
 4. Make a copy of the templates in this repository, revise and run your model.
 
-Steps 1 and 2 are to set up work environment, and are only need to be done once.
+Steps 1 and 2 are to set up work environment and only need to be done once.
 
 ## Set Environment
 
@@ -44,7 +44,7 @@ This part is only required for Windows users. Mac (OS X) already has an SSH clie
 
    Click [**Log in**] button at the bottom, type your password and click [**OK**] to login. This should open a command prompt window and a SFTP window.
 
-   The command prompt is where you type and run your scripts. The SFTP window provides a graphical user interface where you can create/copy/delete files and folders, upload files to Spartan by dragging a file from left to right, and download files to your laptop by dragging files from right to left.
+   The command prompt is where you type and run your scripts. The SFTP window provides a graphical user interface where you can create/copy/delete files and folders, upload files to your HPC by dragging files from left to right, and download files to your laptop by dragging files from right to left.
 
    <p align="center">
       <img src="image\SSH_cmd.PNG" width="55%" />
@@ -55,9 +55,9 @@ This part is only required for Windows users. Mac (OS X) already has an SSH clie
    
 ### Download NetLogo to HPC
 
-In this example, we download NetLogo to this folder `/data/gpfs/projects/punim1439/workflow/netlogo_hpc`. In SFTP window, right click mouse and Create Folder `netlogo_hpc`. 
+In this example, we download NetLogo to this example folder `/data/gpfs/projects/punim1439/workflow/netlogo_hpc`. In the SFTP window, right click the mouse and Create Folder `netlogo_hpc`. 
 
-Then, in command line, 
+Then, in the command line, 
 
 1. Run 
 
@@ -91,22 +91,22 @@ Then, in command line,
 
     **:bulb:Tips**: 
 
-    * Copy and paste in command prompt: **Right Click** mouse:computer_mouse: in command prompt to paste content from clipboard.
-    * Press up arrow key:arrow_up: and down arrow key :arrow_down: in keyboard to recall command history.
+    * Copy and paste in command prompt: **Right Click** mouse:computer_mouse: in the command prompt to paste content from the clipboard.
+    * Press up the arrow key:arrow_up: or down arrow key :arrow_down: on the keyboard to recall your command history.
 
-## Run Experiment
+## Running Experiments
 
-### Set Model BahaviorSpace
+### Set Model BehaviorSpace
 
 1. We used a `Wolf_Sheep_Predation.nlogo` model as an example.
 
-   This model is adjusted on top of a NetLogo sample model `NetLogo 6.2.0/app/models/Sample Models/Biology/Wolf Sheep Predation.nlogo`. We created an `HPC_Experiment` in the BahaviorSpace, added a global variable `repetitions` with 100 values, and removed `user-message "The sheep have inherited the earth"`. 
+   This model is an adjusted version of the NetLogo sample model available in the NetLogo library:  `NetLogo 6.2.0/app/models/Sample Models/Biology/Wolf Sheep Predation.nlogo`. We created an `HPC_Experiment` in the BehaviorSpace, added a global variable `'repetitions'` with 100 values, and removed the line in the NetLogo code that creates the user-message "The sheep have inherited the earth". 
    
    <p align="center">
       <img src="image\NetLogo_BehaviorSpace_.PNG" width="50%" />
    </p>
 
-2. Upload `Wolf_Sheep_Predation.nlogo`, `create_xmls.sh` and `submit_jobarray.slurm` to HPC folder.
+2. Upload `Wolf_Sheep_Predation.nlogo`, `create_xmls.sh` and `submit_jobarray.slurm` to the HPC folder.
 
     <p align="center">
       <img src="image\SSH_Wolf_Sheep_HPC_.PNG" width="58%" />
@@ -122,14 +122,14 @@ Then, in command line,
 
 ### Revise and Run `create_xmls.sh`
 
-1. Edit `create_xmls.sh` (using text editor notepad++, notepad, etc)
+1. Edit `create_xmls.sh` using a text editor (notepad++, notepad, etc.)
 
     - BEHAVIORSPACE_NAME=`'HPC_Experiment'`
     - NETLOGO_MODEL=`'/data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/Wolf_Sheep_Predation.nlogo'`
 
 2. End of Line (EOL) Conversion
 
-   From Bitvise command line, change directory to `Wolf_Sheep_Predation`: 
+   From the Bitvise command line, change directory to `Wolf_Sheep_Predation`: 
 
    ```shell
    cd /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation
@@ -155,17 +155,17 @@ Then, in command line,
 
     **:bulb:Tips**: 
 
-   MS-Windows to Unix like operation systems are using different End of Line (EOL). 
+   MS-Windows to Unix like operation systems use different End of Line (EOL), which can create errors. 
 
-   If you want to see line ending in Notepad++, click menu **View > Show Symbol > Show All Characters**, then you will see Windows has line ending with invisible characters **CRLF**, while Unix has **LF**. Click menu **Edit > EOL Conversion > Unix (LF)** to convert MS-Windows to Unix EOL, as HPC is using Unix like operation systems.
+   If you want to view line endings in Notepad++, click menu **View > Show Symbol > Show All Characters**, you will see that Windows has line ending with invisible characters **CRLF**, while Unix has **LF**. Click menu **Edit > EOL Conversion > Unix (LF)** to convert MS-Windows to Unix EOL, as HPC uses Unix-like operation systems.
 
-   Command `sed -i.bak 's/\r$//g' create_xmls.sh` did the same thing, using string editor to convert EOL of `create_xmls.sh` to Unix removing all **CR**, and the original file is backed up as `submit_jobarray.slurm.bak`.
+   Command `sed -i.bak 's/\r$//g' create_xmls.sh` does the same thing, using string editor to convert EOL of `create_xmls.sh` to Unix removing all **CR**, and the original file is backed up as `submit_jobarray.slurm.bak`.
 
 ### Revise and Run `submit_jobarray.slurm`
 
-1. Edit `submit_jobarray.slurm` (using text editor notepad++, notepad, etc).
+1. Edit `submit_jobarray.slurm` (using a text editor notepad++, notepad, etc.)
 
-      - `#SBATCH` are script directive for Spartan. This script creates a job array of **100** jobs. Each job requires **1** computer node and **8** CPU cores on **snowy** cluster for a maximum wall time of **2** hours. When all jobs are ended, an email notification will be sent to –mail-user. In `#SBATCH` directive, `--qos`, `-A`, `--job-name`, `--mail-user`, `--mail-type` are optional, and can be deleted.
+      - `#SBATCH` are script directive for the HPC. This script creates a job array of **100** jobs. Each job requires **1** computer node and **8** CPU cores on the **snowy** cluster for a maximum job wall time of **2** hours. When all jobs are ended, an email notification is sent to –mail-user. In `#SBATCH` directive, `--qos`, `-A`, `--job-name`, `--mail-user`, `--mail-type` are optional, and can be deleted.
       - `BASE_FOLDER`: current directory of `submit_jobarray.slurm`, and the upper directory of `xmls` folder.
       - `NETLOGO_SH`: file path of `netlogo-headless.sh` under NetLogo 6.2.0 directory.
       - `NETLOGO_MODEL`: file path of `Wolf_Sheep_Predation.nlogo`
@@ -185,7 +185,7 @@ Then, in command line,
     sbatch submit_jobarray.slurm
     ```
 
-    to submit 100 jobs to Spartan. You will receive an email when the computation ends.
+    to submit 100 jobs to the HPC. The entered email address will receive an email when all jobs are completed.
 
     **:bulb:Tips**: 
 
@@ -198,7 +198,7 @@ Then, in command line,
 
 4. Move all slurm_\*.out files to slurm folder (optional)
 
-    When all jobs finished, run 
+    When all jobs have finished, run 
 
     ```shell
     cd /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation
@@ -243,7 +243,7 @@ This will create a file `MergedResults.csv` as the final output file.
     awk '(NR < 8) || (FNR > 7)' /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/outputs/*_table_*.csv > /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation/outputs/MergedResults.csv
     ```
 
-2. In command prompt, put file path or directory path in `“ ”` if filename includes space, for example
+2. In the command prompt, put file path or directory path in `“ ”` if filename includes space. For example
 
     ```shell
     cd “/data/gpfs/projects/punim1439/workflow/netlogo_hpc/NetLogo 6.2.0”
@@ -280,11 +280,11 @@ This will create a file `MergedResults.csv` as the final output file.
     nano netlogo-headless-10g.sh  
     ```
 
-    After editing, press Ctrl + X to exit, type Y to save changes, then press Enter to overwrite file.
+    After editing, press Ctrl + X to exit, type Y to save changes, then press Enter to overwrite the file.
 
 5. NetLogo extensions
 
-    If your model requires an extension which is not a default extention of NetLogo software, the extension should be copied to the same folder of the NetLogo model or can be placed in the extension’s folder in the NetLogo extensions directory. Refer [here](https://ccl.northwestern.edu/netlogo/docs/extensions.html) for where to find extensions. 
+    If your model requires an extension which is not a default extension of NetLogo software, the extension should be copied to the same folder of the NetLogo model or can be placed in the extensions folder in the NetLogo extensions directory. Refer [here](https://ccl.northwestern.edu/netlogo/docs/extensions.html) for where to find extensions. 
 
     For example, we can copy `rngs` folder from `C:\Program Files\NetLogo 6.2.0\app\extensions\.bundled\rngs` on our laptop to `/data/gpfs/projects/punim1439/workflow/netlogo_hpc/NetLogo 6.2.0/app/extensions/.bundled/rngs` on HPC.
 
@@ -296,7 +296,7 @@ This will create a file `MergedResults.csv` as the final output file.
     sbatch submit_single_job.slurm
     ```
     
-     after you [Set Model BahaviorSpace](#set-model-bahaviorspace) You do not need to run [Revise and Run `create_xmls.sh`](#revise-and-run-createxmlssh), [Revise and Run `submit_jobarray.slurm`](#revise-and-run-submitjobarrayslurm) and [Merge CSV Results](#merge-csv-results). 
+     after you [Set Model BehaviorSpace](#set-model-behaviorspace), you do not need to run [Revise and Run `create_xmls.sh`](#revise-and-run-createxmlssh), [Revise and Run `submit_jobarray.slurm`](#revise-and-run-submitjobarrayslurm) and [Merge CSV Results](#merge-csv-results). 
     
     ```bash
     # -- file submit_single_job.slurm --
@@ -322,7 +322,7 @@ This will create a file `MergedResults.csv` as the final output file.
       --experiment "HPC_Experiment" ^
       --table "output_file.csv"
     ```
-7. :bulb: Use [`create_xmls_nested.sh`](create_xmls_nested.sh) to split model by more than one variables
+7. :bulb: Use [`create_xmls_nested.sh`](create_xmls_nested.sh) to split model by more than one variable
 
    - BEHAVIORSPACE_NAME=`'HPC_Experiment'`
    
@@ -342,7 +342,7 @@ cd /data/gpfs/projects/punim1439/workflow/netlogo_hpc/Wolf_Sheep_Predation
 sed -i.bak 's/\r$//g' create_xmls.sh
 bash create_xmls.sh
 
-# check which partition has more available CPUs
+# check which partition has more available CPUs (directives may vary for your HPC)
 spartan-weather
 
 # submit jobs
